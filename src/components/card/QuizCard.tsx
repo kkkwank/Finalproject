@@ -1,51 +1,74 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { StateSelector } from "../../redux/stateSlice";
-import AgeCard from "./AgeCard";
-
 import Button from "./Button";
-import NameCard from "./NameCard";
+import { useAppDispatch } from "../../redux/store";
+import { StateSelector, nextState } from "../../redux/stateSlice";
+import { updateResult } from "../../redux/resultSlice";
+import { useSelector } from "react-redux";
 
 export interface IQuizCardProps {
-  head: string;
-  body: string[];
-  datalen: number;
+  data:
+    | string
+    | { type: string; text: string; option: string }
+    | {
+        type: string;
+        text: string;
+        option: (
+          | { text: string; group: string; next?: undefined }
+          | { text: string; group: string; next: boolean }
+        )[];
+      };
+}
+interface NewType extends IQuizCardProps {
+  data:
+    | { type: string; text: string; option: string }
+    | {
+        type: string;
+        text: string;
+        option: (
+          | { text: string; group: string; next?: undefined }
+          | { text: string; group: string; next: boolean }
+        )[];
+      };
 }
 
 export default function QuizCard(props: IQuizCardProps) {
-  const StateReducer = useSelector(StateSelector);
-
-  const [programComponent, setProgramComponent] = useState(<div></div>);
+  const newProps = (props as NewType).data;
+  const Dtext = newProps.text;
+  const Dtype = newProps.type;
+  const Doption = newProps.option;
+  const dispatch = useAppDispatch();
+  const [inputZone, setInputZone] = useState<JSX.Element>(<div></div>);
+  const StateReducer = useSelector(StateSelector)
   useEffect(() => {
-    if (StateReducer.state === 0) {
-      setProgramComponent(
-        <NameCard head={props.head} body={props.body}></NameCard>
-      );
-    } else if (StateReducer.state === 1) {
-      setProgramComponent(
-        <AgeCard head={props.head} body={props.body}></AgeCard>
-        
-      );
-    } else if (StateReducer.state < props.datalen) {
-      setProgramComponent(
-        <div
-          id="Card"
-          className="grid grid-rows-2  h-screen  w-4/6 sm:w-2/6 md:w-3/6 lg:w-2/6 xl:w-2/6 2xl:w-2/6 3xl:w-2/6 bg-white"
-        >
-          <p className="text-rose-600 font-IBMP text-3xl place-self-center">{props.head}</p>
-          <div className="flex flex-col items-center self-start gap-6">
-            {Object.values(props.body[0]).map((content, idx) => {
-              return <Button content={content} key={idx}></Button>;
-            })}
-          </div>
-        </div>
+    if (Dtype === "fill") {
+      setInputZone(<input type="text" id="name" name="name" required></input>);
+    } else if (Dtype === "choice") {
+      const newDoption: any = Doption; //{text:string,group:string,next?:boolean}[]
+
+      setInputZone(
+        newDoption.map((x: any) => {
+          return (
+            <button
+              onClick={() => {
+                dispatch(updateResult(x.group));
+                dispatch(nextState());
+              }}
+            >{x.text}{x.group}</button>
+          );
+        })
       );
     }
-  }, [StateReducer.state,programComponent]);
+  }, [StateReducer.state]);
 
   return (
-    <div className="flex h-screen max-w-screen justify-center items-center">
-      {programComponent}
+    <div className="flex h-screen max-w-screen justify-center items-center ">
+      <div id="Quiz" className="bg-white">
+        <span className="">{String(Dtext)}</span>
+        <div id="Choice">{inputZone}</div>
+        <div id="nextButton" className="bg-white">
+          <Button></Button>
+        </div>
+      </div>
     </div>
   );
 }

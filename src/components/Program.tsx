@@ -1,9 +1,10 @@
 
 import { useSelector } from "react-redux";
 import { StateSelector } from "../redux/stateSlice";
-import Card from "./card/QuizCard";
-import Particle from "./card/Particle";
-import { data } from "./data/data";
+import Card from "./card/Card";
+import Particle from "./particle/Particle";
+import { question } from "./data/question";
+import Result from "./result/Result";
 export interface IProgramProps {}
 
 export default function Program(props: IProgramProps) {
@@ -11,15 +12,10 @@ export default function Program(props: IProgramProps) {
 
   return (
     <div>
-      {StateReducer.state < data.length ? (
-        <Card
-          head={Object.keys(data[StateReducer.state]).toString()}
-          body={Object.values(data[StateReducer.state])}
-          datalen={data.length}
-          key={StateReducer.state}
-        ></Card>
+      {StateReducer.state < question.length ? (
+        <Card />
       ) : (
-        <p>end</p>
+        <Result />
       )}
       <div id="backgroundParticle">
         <Particle></Particle>
