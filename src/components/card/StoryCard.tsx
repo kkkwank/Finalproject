@@ -33,7 +33,7 @@ export default function StoryCard(props: IStoryCardProps) {
   return (
     <div className="flex flex-col h-screen max-w-screen justify-center items-center">
       <div
-        className={`bg-white w-1/2 h-screen relative ${fadeType}`}
+        className={`w-1/2 h-screen relative ${fadeType}`}
         style={myStyle}
       >
         <div className="absolute bottom-0 right-0">

@@ -1,9 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Login from "./components/login/Login";
 import NoMatch from "./components/Nomatch";
 import Program from "./components/Program";
-import Register from "./components/register/Register";
 
 function App() {
   return (

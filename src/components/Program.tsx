@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import { StateSelector } from "../redux/stateSlice";
 import Card from "./card/Card";
 import Particle from "./particle/Particle";
-import { question } from "./data/question";
 import Result from "./result/Result";
+import { journey } from "./data/journey";
 export interface IProgramProps {}
 
 export default function Program(props: IProgramProps) {
@@ -12,7 +12,7 @@ export default function Program(props: IProgramProps) {
 
   return (
     <div>
-      {StateReducer.state < question.length ? (
+      {StateReducer.state < journey.length ? (
         <Card />
       ) : (
         <Result />
