@@ -9,14 +9,12 @@ export default function Button(props: IButtonProps) {
   const dispatch = useAppDispatch();
 
   return (
-    <button onClick={() => {
+    <button className="border rounded-lg w-52 h-14 bg-neutral-800 text-white" onClick={() => {
       if(props.inputdata==="") alert("Please fill data")
       else dispatch(nextState())
     }
-      
-    
     } >
-     <p className="font-IBMP">ต่อไป</p> 
+     <p className="font-FC Marshmallow text-2xl">ต่อไป</p> 
     </button>
   );
 }

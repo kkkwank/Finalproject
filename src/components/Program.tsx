@@ -17,9 +17,9 @@ export default function Program(props: IProgramProps) {
       ) : (
         <Result />
       )}
-      <div id="backgroundParticle">
+      {/* <div id="backgroundParticle">
         <Particle></Particle>
-      </div>
+      </div> */}
     </div>
   );
 }

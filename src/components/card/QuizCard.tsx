@@ -33,47 +33,59 @@ interface NewType extends IQuizCardProps {
 
 export default function QuizCard(props: IQuizCardProps) {
   const newProps = (props as NewType).data;
-  const Dtext = newProps.text;
+  const Dtext = newProps.text
   const Dtype = newProps.type;
   const Doption = newProps.option;
-  const [inputdata,setInputdata] = useState("");
+  const [inputdata, setInputdata] = useState("");
   const dispatch = useAppDispatch();
-  const [inputZone, setInputZone] = useState<JSX.Element>(<div></div>);
-  const StateReducer = useSelector(StateSelector)
+  const StateReducer = useSelector(StateSelector);
   useEffect(() => {
     console.log("state change!!!");
-    setInputdata("")
+  
+    setInputdata("");
   }, [StateReducer.state]);
- function RenderInputBox(){
-  if (Dtype === "fill") {
-    
-    return <input type="text" value={inputdata} onChange={e=>setInputdata(e.target.value)} />
-    
-  } else if (Dtype === "choice") {
-    const newDoption: any = Doption; //{text:string,group:string,next?:boolean}[]
+  function RenderInputBox() {
+    if (Dtype === "fill") {
+      return (
+        <div >
+          <input className="border w-52 h-14 divide-y"   //fill เดี๋ยวมาแก้
+            type="text"
+            value={inputdata}
+            onChange={(e) => setInputdata(e.target.value)}
+          />
 
-    
-      return newDoption.map((x: any) => {
-        return (
-          <button
-            onClick={() => {
-              dispatch(updateResult(x.group));
-              dispatch(nextState());
-            }}
-          >{x.text}{x.group}</button>
-        );
-      }
-    );
+          <Button inputdata={inputdata}></Button>
+        </div>
+      );
+    } else if (Dtype === "choice") {
+      const newDoption: any = Doption; //{text:string,group:string,next?:boolean}[]
+
+      return (
+        <div className="flex flex-col space-y-3">
+          {newDoption.map((x: any) => {
+            return (
+              <button
+              className="border rounded-lg w-52 h-14 bg-neutral-800 text-white text-3xl"
+                onClick={() => {
+                  dispatch(updateResult(x.group));
+                  dispatch(nextState());
+                }}
+              >
+                {x.text}
+                {x.group}
+              </button>
+            );
+          })}
+        </div>
+      );
+    }
   }
- }
   return (
     <div className="flex h-screen max-w-screen justify-center items-center ">
-      <div id="Quiz" className="bg-white">
-        <span className="">{String(Dtext)}</span>
-        <div id="Choice">{inputZone}</div>
+      <div id="Quiz" className="bg-white flex flex-col h-screen w-1/2 justify-center items-center space-y-5">
+        <div className="text-4xl">{Dtext?.split('\n').map((value,key)=>{return <p key={key}>{value}<br/></p>})}</div>
         <div id="nextButton" className="bg-white">
-        {RenderInputBox()}
-          <Button inputdata={inputdata}></Button>
+          {RenderInputBox()}
         </div>
       </div>
     </div>

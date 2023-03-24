@@ -1,7 +1,7 @@
 import "../../css/cardAnimation.css";
 import { useAppDispatch } from "../../redux/store";
 import { nextState } from "../../redux/stateSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 export interface IStoryCardProps {
   data:
     | string
@@ -30,21 +30,25 @@ export default function StoryCard(props: IStoryCardProps) {
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
   };
+  useEffect(()=>{
+    
+  })
   return (
-    <div className="flex flex-col h-screen w-screen justify-center items-center">
+    <div className="flex flex-col h-screen max-w-screen justify-center items-center">
       <div
-        className={`object-cover w-96 h-full relative ${fadeType}`}
+        className={`w-96 h-full relative ${fadeType}`}
         style={myStyle}
       >
-        <div className="absolute bottom-0 right-0">
+        <div className={`absolute bottom-0 right-0 `}>
           <button
             onClick={async () => {
               setFadeType("fade-out-image");
-              await timeout(5000);
+              
+              await timeout(0);
               dispatch(nextState());
             }}
           >
-            <p className="font-IBMP">ต่อไป</p>
+            <p className="font-IBMP text-white text-xl">ต่อไป→</p>
           </button>
         </div>
       </div>
