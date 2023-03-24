@@ -1,7 +1,8 @@
 import "../../css/cardAnimation.css";
 import { useAppDispatch } from "../../redux/store";
-import { nextState } from "../../redux/stateSlice";
+import { StateSelector, nextState } from "../../redux/stateSlice";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 export interface IStoryCardProps {
   data:
     | string
@@ -21,6 +22,7 @@ interface NewType extends IStoryCardProps {
 export default function StoryCard(props: IStoryCardProps) {
   const [fadeType, setFadeType] = useState("fade-in-image");
   const dispatch = useAppDispatch();
+  const StateReducer = useSelector(StateSelector);
   let newProps = (props as NewType).data;
   function timeout(delay: number) {
     return new Promise((res) => setTimeout(res, delay));
@@ -29,26 +31,29 @@ export default function StoryCard(props: IStoryCardProps) {
     backgroundImage: `url(${newProps})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
   };
-  useEffect(()=>{
-    
-  })
+  useEffect(() => {});
   return (
     <div className="flex flex-col h-screen max-w-screen justify-center items-center">
-      <div
-        className={`w-96 h-full relative ${fadeType}`}
-        style={myStyle}
-      >
+      <div className={`w-96 h-full relative ${fadeType}`} style={myStyle}>
         <div className={`absolute bottom-0 right-0 `}>
           <button
-            onClick={async () => {
+            onClick={() => {
               setFadeType("fade-out-image");
-              
-              await timeout(0);
+              console.log(StateReducer.state);
+              if (StateReducer.state === 0) {
+                setFadeType("fade-in-image");
+              }
               dispatch(nextState());
             }}
           >
-            <p className="font-IBMP text-white text-xl">ต่อไป→</p>
+            <p
+              id="storybutton"
+              className="font-FCmar text-white text-3xl space-x-0.5"
+            >
+              ต่อไป<span className="text-2xl">→</span>
+            </p>
           </button>
         </div>
       </div>

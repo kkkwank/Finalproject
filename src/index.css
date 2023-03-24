@@ -18,3 +18,7 @@ code {
 body {
   overflow: hidden; /* Hide scrollbars */
 }
+@font-face {
+  font-family: "FC Marshmallow Regular";
+  src: url("../public/font/FC Marshmallow Regular.ttf");
+}

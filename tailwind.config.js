@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       fontFamily:{
         'IBMP':[ 'IBM Plex Sans Thai', 'sans-serif'],
+        'FCmar':[ 'FC Marshmallow Regular', 'IBM Plex Sans Thai'],
       }
     },
   },
