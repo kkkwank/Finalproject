@@ -3,31 +3,6 @@ export const story = {
   //   data: "./asssts/file/path",
   //   type: "story",
   // },
-   "story1":{
-    data: "./assets/image/story1.jpg",
-    type: "story",
-    time:10
-  },
-  "story2":{
-    data: "./assets/image/story2.jpg",
-    type: "story",
-    time:10
-  },
-  "story3":{
-    data: "./assets/image/story3.jpg",
-    type: "story",
-    time:10
-  },
-  "clocktest":{
-    data: "./assets/image/clocktest.gif",
-    type: "story",
-    time:10
-  },
-  "Story01":{
-    data: "./assets/image/Story01.gif",
-    type: "story",
-    time:10
-  },
   "s1":{
     data: "./assets/image/s1.gif",
     type: "story",
