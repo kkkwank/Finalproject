@@ -44,16 +44,21 @@ export default function QuizCard(props: IQuizCardProps) {
   const StateReducer = useSelector(StateSelector);
   useEffect(() => {
     console.log("state change!!!");
-
     setInputdata("");
   }, [StateReducer.state]);
+  const myStyle = {
+    backgroundImage: `url(${Dbgpath})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+  };
   function RenderInputBox() {
     console.log(StateReducer.state);
     if (Dtype === "fill") {
       return (
         <div>
           <input
-            className="border w-52 h-14 divide-y" //fill เดี๋ยวมาแก้
+            className="border w-52 h-14 divide-y bg-transparent"
             type="text"
             value={inputdata}
             onChange={(e) => setInputdata(e.target.value)}
@@ -91,8 +96,9 @@ export default function QuizCard(props: IQuizCardProps) {
       <div
         id="Quiz"
         className="bg-white flex flex-col h-screen w-1/2 justify-center items-center space-y-5"
+        style={myStyle}
       >
-        <div className="text-4xl">
+        <div className="text-4xl bg-transparent">
           {Dtext?.split("\n").map((value, key) => {
             return (
               <p key={key}>
@@ -102,7 +108,7 @@ export default function QuizCard(props: IQuizCardProps) {
             );
           })}
         </div>
-        <div id="nextButton" className="bg-white">
+        <div id="nextButton" className="bg-transparent">
           {RenderInputBox()}
         </div>
       </div>
