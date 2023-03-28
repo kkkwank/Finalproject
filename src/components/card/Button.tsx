@@ -17,7 +17,7 @@ export default function Button(props: IButtonProps) {
         else dispatch(nextState());
       }}
     >
-      <p className="font-FC Marshmallow text-2xl">ต่อไป</p>
+      <p className="font-FCmar text-2xl">ต่อไป</p>
     </button>
   );
 }

@@ -58,7 +58,7 @@ export default function QuizCard(props: IQuizCardProps) {
       return (
         <div>
           <input
-            className="border w-52 h-14 divide-y bg-transparent"
+            className="border w-52 h-14 divide-y bg-transparent font-FCmar"
             type="text"
             value={inputdata}
             onChange={(e) => setInputdata(e.target.value)}
@@ -77,7 +77,7 @@ export default function QuizCard(props: IQuizCardProps) {
               <button
                 id="quizbutton"
                 key={idx}
-                className="border rounded-lg w-52 h-14 bg-neutral-800 text-white text-3xl"
+                className="border rounded-lg w-52 h-14 bg-neutral-800 text-white text-3xl font-FCmar"
                 onClick={() => {
                   dispatch(updateResult(x.group));
                   dispatch(nextState());
@@ -95,13 +95,13 @@ export default function QuizCard(props: IQuizCardProps) {
     <div className="flex h-screen max-w-screen justify-center items-center ">
       <div
         id="Quiz"
-        className="bg-white flex flex-col h-screen w-1/2 justify-center items-center space-y-5"
+        className="bg-white flex flex-col h-full w-full justify-center items-center space-y-5"
         style={myStyle}
       >
         <div className="text-4xl bg-transparent">
           {Dtext?.split("\n").map((value, key) => {
             return (
-              <p key={key}>
+              <p key={key} className="font-FCmar">
                 {value}
                 <br />
               </p>
