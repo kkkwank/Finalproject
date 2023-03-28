@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 export interface IQuizCardProps {
   data:
     | string
-    | { type: string; text: string; option: string }
+    | { type: string; text: string; option: string; bgpath: string }
     | {
         type: string;
         text: string;
@@ -16,11 +16,12 @@ export interface IQuizCardProps {
           | { text: string; group: string; next?: undefined }
           | { text: string; group: string; next: boolean }
         )[];
+        bgpath: string;
       };
 }
 interface NewType extends IQuizCardProps {
   data:
-    | { type: string; text: string; option: string }
+    | { type: string; text: string; option: string; bgpath: string }
     | {
         type: string;
         text: string;
@@ -28,6 +29,7 @@ interface NewType extends IQuizCardProps {
           | { text: string; group: string; next?: undefined }
           | { text: string; group: string; next: boolean }
         )[];
+        bgpath: string;
       };
 }
 
@@ -36,6 +38,7 @@ export default function QuizCard(props: IQuizCardProps) {
   const Dtext = newProps.text;
   const Dtype = newProps.type;
   const Doption = newProps.option;
+  const Dbgpath = newProps.bgpath;
   const [inputdata, setInputdata] = useState("");
   const dispatch = useAppDispatch();
   const StateReducer = useSelector(StateSelector);
@@ -64,11 +67,11 @@ export default function QuizCard(props: IQuizCardProps) {
 
       return (
         <div className="flex flex-col space-y-3">
-          {newDoption.map((x: any,idx:number) => {
+          {newDoption.map((x: any, idx: number) => {
             return (
               <button
-              id="quizbutton"
-              key={idx}
+                id="quizbutton"
+                key={idx}
                 className="border rounded-lg w-52 h-14 bg-neutral-800 text-white text-3xl"
                 onClick={() => {
                   dispatch(updateResult(x.group));
