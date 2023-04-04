@@ -36,8 +36,8 @@ export default function StoryCard(props: IStoryCardProps) {
   useEffect(() => {});
   return (
     <div className="flex flex-col h-screen max-w-screen justify-center items-center">
-      <div className={`w-full h-full relative my-3 ${fadeType}`} style={myStyle}>
-        <div className={`absolute bottom-0 right-0 `}>
+      <div className={`w-full h-full ${fadeType}`} style={myStyle}>
+        <div className={`fixed bottom-0 right-0 `}>
           <button
             onClick={() => {
               setFadeType("fade-out-image");

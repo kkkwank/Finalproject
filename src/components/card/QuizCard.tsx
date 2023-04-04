@@ -56,7 +56,7 @@ export default function QuizCard(props: IQuizCardProps) {
     console.log(StateReducer.state);
     if (Dtype === "fill") {
       return (
-        <div>
+        <div className="flex flex-col space-y-3">
           <input
             className="border w-52 h-14 divide-y bg-transparent font-FCmar"
             type="text"
