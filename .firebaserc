@@ -1,8 +1,5 @@
 {
   "projects": {
-    "default": "kkwanproject",
-    "staging": "myselfconflict-1f924"
-  },
-  "targets": {},
-  "etags": {}
+    "default": "myselfconflictapplication"
+  }
 }
