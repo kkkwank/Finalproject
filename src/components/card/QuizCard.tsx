@@ -58,7 +58,7 @@ export default function QuizCard(props: IQuizCardProps) {
       return (
         <div className="flex flex-col space-y-3">
           <input
-            className="border w-52 h-14 divide-y bg-transparent font-FCmar"
+            className="border w-52 h-14 divide-y bg-transparent font-FCmar text-3xl"
             type="text"
             value={inputdata}
             onChange={(e) => setInputdata(e.target.value)}

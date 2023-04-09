@@ -26,13 +26,13 @@ export const question = {
       option: "",
       bgpath: "./assets/bgquiz/BG-Cloud.gif"
     },
-    type: "./assets/card/card1.jpg",
+    type: "question",
   },
 
   q3: {
     data: {
       type: "choice",
-      text: "ถ้าคะแนนความมั่นใจ\nเต็ม 5 คะแนน\nเธอให้ตัวเองเท่าไหร ?",
+      text: "ถ้าคะแนนความมั่นใจ\nเต็ม 5 คะแนน\nเธอให้ตัวเองเท่าไหร่ ?",
       option: [
         { text: "1", group: "1" },
         { text: "2", group: "2" },
@@ -48,7 +48,7 @@ export const question = {
   q4: {
     data: {
       type: "choice",
-      text: "แล้วเธอเคยมีความรู้สึก\nไม่มั่นใจในของตัวเองไหม ?",
+      text: "แล้วเธอเคยมีความรู้สึก\nไม่มั่นใจในตัวเองบ้างไหม ?",
       option: [
         { text: "ไม่เลย", group: "1" },
         { text: "เล็กน้อย", group: "2" },
@@ -78,7 +78,7 @@ export const question = {
   q6: {
     data: {
       type: "choice",
-      text: "แล้วเธอคิดว่า...\nรูปร่างหน้าตาส่งผลต่อ\nโอกาสด้านอื่น ๆ ด้วยไหม?",
+      text: "แล้วเธอคิดว่า…\nรูปร่างหน้าตาส่งผลต่อ\nโอกาสด้านอื่น ๆ ด้วยไหม ?",
       option: [
         { text: "ไม่เลย", group: "1" },
         { text: "เล็กน้อย", group: "2" },
